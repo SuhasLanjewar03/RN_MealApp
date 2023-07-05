@@ -16,7 +16,7 @@ export default function App() {
                     {
                         headerStyle: {backgroundColor: '#8000FF'},
                         headerTintColor: 'white',
-                        contentStyle: {backgroundColor: '#E3CEF6'}
+                        contentStyle: {backgroundColor: 'rgb(227,206,245)'}
                     }
                 }>
                     <Stack.Screen name="MealsCategories" component={CategoriesScreen}
