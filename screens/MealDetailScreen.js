@@ -4,15 +4,29 @@ import {
     View,
     StyleSheet,
     ScrollView,
+    Button,
 } from "react-native";
 import {MEALS} from "../data/dummy-data";
 import MealDetails from "../components/MealDetails";
 import Subtitle from "../components/MealDetail/Subtitle";
 import List from "../components/MealDetail/List";
+import {useLayoutEffect} from "react";
+import IconButton from "../components/IconButton";
 
-function MealDetailScreen({route}) {
+function MealDetailScreen({route, navigation}) {
     const mealId = route.params.mealId;
     const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+
+    function HeaderButtonPressHandler(){
+        alert('Done!')
+    }
+    useLayoutEffect(()=>{
+        navigation.setOptions({
+            headerRight:()=>{
+                return <IconButton onPress={HeaderButtonPressHandler} icon="star" color={'#EADD89FF'}/>
+            }
+        })
+    })
     return (
         <ScrollView style={styles.rootContainer}>
             <View style={styles.image}>
@@ -25,13 +39,12 @@ function MealDetailScreen({route}) {
                 affordability={selectedMeal.affordability}/>
 
             <View style={styles.listOuterContainer}>
-            <View style={styles.listContainer}>
-            <Subtitle>INGREDIENTS</Subtitle>
-                <List data={selectedMeal.ingredients}/>
-            <Subtitle>STEPS</Subtitle>
-            <List data={selectedMeal.steps}/>
-            </View>
-
+                <View style={styles.listContainer}>
+                    <Subtitle>INGREDIENTS</Subtitle>
+                    <List data={selectedMeal.ingredients}/>
+                    <Subtitle>STEPS</Subtitle>
+                    <List data={selectedMeal.steps}/>
+                </View>
             </View>
 
         </ScrollView>
@@ -53,9 +66,12 @@ const styles = StyleSheet.create({
     },
     title:{
         fontWeight:'bold',
-        fontSize:24,
+        fontSize:21,
         margin:8,
         textAlign:"center",
+        textTransform:"uppercase",
+        textShadowRadius:70,
+        textShadowColor:'yellow',
     },
     listOuterContainer:{
         alignItems:"center",
