@@ -1,9 +1,9 @@
 import {Pressable, StyleSheet} from "react-native";
-import { Fontisto } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 function IconButton({ icon, color, onPress}){
     return(
         <Pressable onPress={onPress} style={({Pressed})=> Pressed && styles.Pressed}>
-            <Fontisto name={icon} size={30} color={color} />
+            <Ionicons  name={icon} size={24} color={color} />
         </Pressable>
     );
 }

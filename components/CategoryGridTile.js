@@ -4,19 +4,25 @@ import{
     Text,
     StyleSheet,
     Platform,
+    ImageBackground,
 } from 'react-native';
 
-function CategoryGridTile({title, color, onPress}){
+function CategoryGridTile({title, color, onPress, imageUrl}){
 
     return(
         <View style={styles.gridItem}>
+            {/*<ImageBackground source={require('../assets/Images/italian.jpg')}*/}
+            {/*resizeMode='cover'*/}
+            {/*style={styles.mainBg}*/}
+            {/*imageStyle={styles.backgroundImage}>*/}
             <Pressable android_ripple={{color:color}}
                        style={({pressed}) =>[styles.button, pressed ? styles.buttonPressed:null,]}
                        onPress={onPress}>
-                <View style={[styles.innerContainer,{backgroundColor: color}]}>
+                <View style={[styles.innerContainer, {backgroundColor:color}]}>
                     <Text style={styles.title}>{title}</Text>
                 </View>
             </Pressable>
+       {/*// </ImageBackground>*/}
         </View>
     );
 }
@@ -28,8 +34,9 @@ const styles= StyleSheet.create({
         margin: 16,
         height:150,
         borderRadius:8,
+        //opacity:0.5,
         elevation:4,
-        backgroundColor:'#ffffff',
+        backgroundColor:'lavender',
         shadowColor:'#000000',
         shadowOpacity:0.25,
         shadowOffset: { width:0, height:2},
@@ -52,5 +59,11 @@ const styles= StyleSheet.create({
     title:{
         fontWeight:'bold',
         fontSize:18,
+    },
+    mainBg: {
+        flex: 1,
+    },
+    backgroundImage: {
+        opacity: 0.3,
     },
 });
